@@ -44,6 +44,7 @@ for i in range(poweroftwo):
     bunches.append(i)
     data = new_data[:]
     est = float(4.0 * markov_pi(n_trials, delta) / float(n_trials))
+    print(est)
     print('pi^est - pi) = {} COMPARET TO mean value, estimate of pi = {}'.format(abs(math.pi ** est - math.pi), mean / float(N)))
 pylab.plot(bunches, errors, 'o')
 pylab.xlabel('iteration')
