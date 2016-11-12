@@ -16,7 +16,7 @@ def markov_disk_box(sigma):
 
 N = 4
 sigma = 0.1197
-n_runs = 5000000
+n_runs = 20
 histo_data = []
 for run in range(n_runs):
     pos = markov_disk_box(sigma)
@@ -25,7 +25,7 @@ for run in range(n_runs):
 pylab.hist(histo_data, bins=100, normed=True)
 pylab.xlabel('x')
 pylab.ylabel('frequency')
-pylab.title('Direct sampling: x coordinate histogram (density eta=0.18)')
+pylab.title('Markov sampling: x coordinate histogram (density eta=0.18)')
 pylab.grid()
 pylab.savefig('markov_disks_histo.png')
 pylab.show()

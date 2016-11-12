@@ -18,7 +18,7 @@ def direct_disks_box(N, sigma):
 
 N = 4
 sigma = 0.1197
-n_runs = 100
+n_runs = 10000
 histo_data = []
 for run in range(n_runs):
     pos = direct_disks_box(N, sigma)
