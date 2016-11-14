@@ -34,10 +34,10 @@ singles = [(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1), (3, 0), (3, 1)]
 pairs = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
 sigma = 0.10
 t = 0.0
-n_events = 990000
+n_events = 5000000
 for event in range(n_events):
     if event % 100000 == 0:
-        print(event)
+        print event
     wall_times = [wall_time(pos[k][l], vel[k][l], sigma) for k, l  in singles]
     pair_times = [pair_time(pos[k], vel[k], pos[l], vel[l], sigma) for k, l in pairs]
     next_event = min(wall_times + pair_times)
@@ -73,4 +73,4 @@ for event in range(n_events):
             vel[b][k] -= e_perp[k] * scal
 
 for conf in configurations:
-    print(conf, hits[conf])
+    print conf, hits[conf]
