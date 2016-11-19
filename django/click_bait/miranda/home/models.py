@@ -14,5 +14,11 @@ class Post(models.Model):
 	def __str__(self):
 		return "Post " + self.topic_title + " with resume: " + self.topic_resume + " has been published on: "
 
+class Image(models.Model):
+	image_name = models.TextField(max_length=50)
+	image_alt = models.TextField(max_length=200)
+	image_path = models.TextField()
 
-# TODO::May need image class in future
+class Image_Post(models.Model):
+    image_id = models.ForeignKey(Image, on_delete=models.CASCADE)
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
