@@ -6,5 +6,5 @@ from django.views.generic import ListView
 
 class IndexView(ListView):
 	def get(self, request):
-		template_name = 'home/blog.html'
+		template_name = 'home/single_post.html'
 		return render(request, template_name) 		
