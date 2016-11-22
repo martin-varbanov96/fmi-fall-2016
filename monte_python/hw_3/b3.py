@@ -30,6 +30,15 @@ def to_file(input_var, N):
 	f.close()
 
 
+def get_info_from_init_conf(filename):
+	output =[]
+	f = open(filename, 'r')
+	for line in f:
+		a, b =line.split()
+		output.append([float(a), float(b)])
+	return output
+
+
 def show_conf(L, sigma, title, fname):
 	pylab.axes()
 	for [x, y] in L:
@@ -43,20 +52,18 @@ def show_conf(L, sigma, title, fname):
 	pylab.close()
 
 L = []
-N=256
+N=64
 filename = 'disk_configuration_N%i.txt' % (N)
-to_file(L, N)
 
-f = open(filename, 'r')
-for line in f:
-	a, b =line.split()
-	L.append([float(a), float(b)])
+for i in range(0, 10):
+	to_file(L, N)
+	L.extend(get_info_from_init_conf(filename))
 
-covering_density = 0.72
+covering_density = 0.42
 sigma_sq = covering_density / (len(L) * math.pi)
 sigma = math.sqrt(sigma_sq)
 delta = 0.3
-n_steps = 1000
+n_steps = 10000
 
 for steps in range(n_steps):
     a = random.choice(L)
@@ -68,4 +75,5 @@ for steps in range(n_steps):
         a[:] = b
 
 img_name="disks_N=%i.png" % (N)
-show_conf(L, sigma, 'test graph', img_name)
+graph_name="N=%i" % (N)
+show_conf(L, sigma, graph_name, img_name)
