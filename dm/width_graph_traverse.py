@@ -56,7 +56,6 @@ class Graph(object):
         visited=dict()
         vertucles = self.vertices()
         seed_elmnt = vertucles[0]
-        print("seed_el is ", seed_elmnt)
         for v in vertucles:
             visited[v]=False
         b=list()
@@ -66,12 +65,29 @@ class Graph(object):
         while(que.empty() is False):
             a=que.get()
             b.append(a)
-            print(b)
             for v in self.__graph_dict[a]:
                 if(visited[v] is False):
                     que.put(v)
                     visited[v] = True
         return b
+
+    def edges_of_vertex(self, curr_vertex):
+        return self.__graph_dict[curr_vertex]
+
+    def dfs(self, curr_vertex, discovered_vertxes=[]):
+        vertexes = self.vertices()
+        discovered_vertxes.append(curr_vertex)
+        related_edges = self.edges_of_vertex(curr_vertex)
+        for i in related_edges:
+            if i not in discovered_vertxes:
+                self.dfs(i, discovered_vertxes)
+        return discovered_vertxes
+        # v as discovered
+        # for all edges from v to w in G.adjacentEdges(v) do
+        #     if vertex w is not labeled as discovered then
+        #       recursively call DFS(G,w)
+        
+
     def __str__(self):
         res = "vertices: "
         for k in self.__graph_dict:
@@ -94,5 +110,5 @@ if __name__ == "__main__":
 
 
     graph = Graph(g)
-    print("Final answer is:", graph.traverse_width())
+    print("Final answer is:", graph.dfs("e"))
 
