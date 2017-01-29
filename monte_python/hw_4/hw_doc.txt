@@ -1,0 +1,9 @@
+A1
+Explain, using the mathematical definition given in the introduction, why the segment [-1, 1] represents a one-dimensional sphere, and why the square from -1 to 1 in x and from -1 to 1 in y is a unit cylinder in two dimensions (two sentences). Confirm and explain that the unit cylinder in two dimensions has twice the volume of the unit sphere in one dimension (two sentences). Explain (prove) why the above relations
+V_cyl(2) = 2 V_sph(1)
+V_cyl(3) = 2 V_sph(2)
+are valid in arbitrary dimensions, that is, prove that
+V_cyl(d + 1) = 2 V_sh(d)
+In the above table, the quantity Q(d) equals twice the sphere volume in d dimensions divided by the unit cylinder volume in d dimensions. Prove that Q(d) equals the ratio of the sphere volume in dimension (d) and the sphere volume in dimension (d-1), that is, prove that
+Q(d) = V_sph(d) / V_sph(d-1)
+NB: In the following, we will compute Q(d) by Markov-chain Monte Carlo sampling.
